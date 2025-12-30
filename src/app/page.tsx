@@ -1,4 +1,5 @@
 import { Container } from "@/components/Container";
+import { Header } from "@/components/Header";
 import { PostLists } from "@/components/PostsList";
 import { SpinLoader } from "@/components/SpinLoader";
 import { Suspense } from "react";
@@ -6,11 +7,7 @@ import { Suspense } from "react";
 export default async function HomePage() {
     return (
         <Container>
-            <header>
-                <h1 className="text-6xl font-bold text-center py-8">
-                    Aqui é a Header
-                </h1>
-            </header>
+            <Header />
 
             <p className="text-justify">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
