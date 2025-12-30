@@ -12,7 +12,7 @@ const JSON_POSTS_FILE_PATH = resolve(
     "posts.json"
 );
 const ENCODE = "utf-8";
-const SIMULATE_WAIT = 5000;
+const SIMULATE_WAIT = 0;
 
 export class JsonPostRepository implements PostRepository {
     private async simulateWait() {
@@ -33,7 +33,7 @@ export class JsonPostRepository implements PostRepository {
 
     async findAll(): Promise<PostModel[]> {
         await this.simulateWait();
-        
+
         return this.readFromDisk() || [];
     }
 
