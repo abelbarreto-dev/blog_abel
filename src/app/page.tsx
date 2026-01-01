@@ -4,8 +4,7 @@ import { PostLists } from "@/components/PostsList";
 import { SpinLoader } from "@/components/SpinLoader";
 import { Suspense } from "react";
 import { PostHeading } from "@/components/PostHeading";
-import Image from "next/image";
-import Link from "next/link";
+import { ImageCover } from "../components/ImageCover/index";
 
 export default async function HomePage() {
     return (
@@ -13,19 +12,12 @@ export default async function HomePage() {
             <Header />
 
             <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">
-                <Link
-                    href=""
-                    className={"w-full h-full overflow-hidden rounded-xl"}
-                >
-                    <Image
-                        className="group-hover:scale-105 transition border w-full h-full object-cover object-center"
-                        src={"/images/bryen_0.png"}
-                        width={1200}
-                        height={768}
-                        alt="Titulo da Postagem"
-                        priority
-                    />
-                </Link>
+                <ImageCover
+                    src={"/images/bryen_0.png"}
+                    url={""}
+                    priority={true}
+                />
+
                 <div className="flex flex-col gap-4 sm:justify-center">
                     <time
                         dateTime={new Date().toDateString()}
