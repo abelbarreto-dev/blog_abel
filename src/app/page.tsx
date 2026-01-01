@@ -3,51 +3,58 @@ import { Header } from "@/components/Header";
 import { PostLists } from "@/components/PostsList";
 import { SpinLoader } from "@/components/SpinLoader";
 import { Suspense } from "react";
+import { PostHeading } from "@/components/PostHeading";
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function HomePage() {
     return (
         <Container>
             <Header />
 
-            <p className="text-justify">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-                sed fuga accusamus quam quis, est iusto odit debitis quae
-                tenetur tempora cumque doloribus ducimus accusantium, corporis
-                distinctio quo alias deleniti esse atque magni tempore ea!
-                Nihil, porro voluptatum aliquid minus dolores omnis. Ex modi
-                illum beatae eveniet suscipit, perferendis ducimus illo in odio.
-                Illo, maiores sit officiis aliquid aperiam totam natus, vitae
-                sequi inventore dolorem numquam cum voluptatum itaque?
-                Reiciendis similique atque id? Officia alias obcaecati
-                accusantium enim ipsa repudiandae pariatur rerum fugit cum
-                architecto quam velit necessitatibus inventore, impedit optio
-                odit consequatur mollitia suscipit fugiat corrupti! A omnis
-                neque magnam sint at molestiae optio, sunt consequuntur corrupti
-                expedita. Veritatis temporibus at ducimus illum, harum fugiat
-                dolor odit voluptate! Cumque libero eos laborum reiciendis,
-                blanditiis consequatur veritatis, voluptate quis, temporibus
-                alias minus nesciunt incidunt. Ipsa id ipsum voluptatum, ab
-                similique non reprehenderit optio sapiente atque! Nostrum
-                dolores distinctio repudiandae a dolor doloribus qui tempora
-                ipsum labore, iure possimus voluptates corrupti rem sequi odio
-                atque architecto eius voluptatem quaerat explicabo! Debitis
-                optio omnis delectus sequi possimus repellat magnam ea
-                voluptatibus. Dicta nulla tenetur minima! Quo tempora nemo quod
-                non aperiam adipisci explicabo repellat asperiores hic, quasi
-                facere necessitatibus, sapiente molestiae rem aliquam minus cum
-                labore minima consectetur consequatur accusantium quae. Tenetur
-                eos, perspiciatis quaerat omnis accusantium vero animi earum
-                unde ab magnam molestias facere! Vitae laborum natus ipsam et
-                doloremque veniam, beatae fugiat incidunt tenetur quae, ex hic!
-                Eum vero inventore veniam omnis libero eligendi tenetur saepe et
-                eaque. Harum enim nesciunt impedit. Harum aut magnam ab
-                necessitatibus iusto dolores non consequatur voluptate molestiae
-                dolorum beatae voluptatum, tenetur minus temporibus excepturi
-                impedit corrupti odio iure sint, amet sit quas atque dolore.
-                Amet impedit, autem beatae, ex a vitae nisi repudiandae
-                asperiores ipsam, blanditiis ipsa. Fugiat atque recusandae,
-                magnam ullam sequi reiciendis?
-            </p>
+            <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">
+                <Link
+                    href=""
+                    className={"w-full h-full overflow-hidden rounded-xl"}
+                >
+                    <Image
+                        className="group-hover:scale-105 transition border w-full h-full object-cover object-center"
+                        src={"/images/bryen_0.png"}
+                        width={1200}
+                        height={768}
+                        alt="Titulo da Postagem"
+                        priority
+                    />
+                </Link>
+                <div className="flex flex-col gap-4 sm:justify-center">
+                    <time
+                        dateTime={new Date().toDateString()}
+                        className="text-slate-600 block text-sm/tight"
+                    >
+                        {new Date().toLocaleDateString()}
+                    </time>
+
+                    <PostHeading url={""} as={"h1"}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </PostHeading>
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dicta quia quidem voluptatum sapiente saepe. Excepturi
+                        soluta corporis fuga, sit commodi libero ipsum harum
+                        aliquam suscipit veritatis rerum! Vel magni, voluptas
+                        harum earum ipsa assumenda corrupti qui libero ducimus
+                        numquam? Quia hic odio maxime? Ea voluptatem excepturi
+                        voluptate optio minus rem eveniet nihil quia quae totam
+                        obcaecati ex, cum tenetur quas? Quaerat odit debitis, ut
+                        porro reprehenderit eum dolore ipsa sed veniam
+                        necessitatibus iure quis maxime ipsum illum voluptas
+                        vitae vel? Accusantium nemo sapiente placeat ex facilis,
+                        ratione animi possimus assumenda vel nam cumque facere
+                        odit. Necessitatibus inventore fugit aut nulla!
+                    </p>
+                </div>
+            </section>
 
             <Suspense fallback={<SpinLoader />}>
                 <PostLists />
