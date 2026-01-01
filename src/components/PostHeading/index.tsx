@@ -13,12 +13,12 @@ export const PostHeading = ({
 }: PostHeadingProps) => {
     const headingClassesMap = {
         h1: "text-2xl/tight font-extrabold sm:text-4xl",
-        h2: "text-2xl/tight font-extrabold sm:text-4xl",
+        h2: "text-2xl/tight font-extraboldl",
     };
 
     return (
         <Title className={headingClassesMap[Title]}>
-            <Link href={url}>{children}</Link>
+            <Link href={url} className="group-hover:text-slate-600 transition">{children}</Link>
         </Title>
     );
 };
