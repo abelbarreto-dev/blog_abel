@@ -6,7 +6,7 @@ export const PostLists = async () => {
     const posts = await findAllPublishedPosts();
 
     return (
-        <div className="gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="gap-8 mb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => {
                 const postLink = `/post/${post.slug}`;
 

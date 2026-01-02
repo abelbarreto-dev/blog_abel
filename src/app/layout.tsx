@@ -4,6 +4,7 @@ import { Container } from "../components/Container/index";
 import { Header } from "../components/Header/index";
 
 import "./globals.css";
+import { Footer } from "@/components/Footer";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -38,11 +39,7 @@ export default function RootLayout({
 
                     {children}
 
-                    <footer>
-                        <p className="text-6xl font-bold text-center py-8">
-                            Aqui é o Footer
-                        </p>
-                    </footer>
+                    <Footer />
                 </Container>
             </body>
         </html>

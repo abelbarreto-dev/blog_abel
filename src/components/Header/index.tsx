@@ -10,7 +10,7 @@ export const Header = () => {
                 "md:text-6xl md:py-11",
                 "lg:text-7xl md:py-12"
             )}>
-                <Link href="">The Abel Blog</Link>
+                <Link href="/">The Abel Blog</Link>
             </h1>
         </header>
     );
