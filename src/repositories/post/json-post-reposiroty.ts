@@ -20,10 +20,10 @@ export class JsonPostRepository implements PostRepository {
             return;
         }
 
-        await new Promise(resolve => setTimeout(resolve, SIMULATE_WAIT));
+        await new Promise((resolve) => setTimeout(resolve, SIMULATE_WAIT));
     }
 
-    private async readFromDisk() {
+    private async readFromDisk(): Promise<PostModel[]> {
         const jsonContent = await readFile(JSON_POSTS_FILE_PATH, ENCODE);
 
         const { posts } = JSON.parse(jsonContent);
@@ -31,18 +31,20 @@ export class JsonPostRepository implements PostRepository {
         return posts;
     }
 
-    async findAll(): Promise<PostModel[]> {
+    async findAllPublished(): Promise<PostModel[]> {
         await this.simulateWait();
 
-        return this.readFromDisk() || [];
+        const posts = await this.readFromDisk();
+
+        return posts.filter(post => post.published);
     }
 
     async findById(id: string): Promise<PostModel> {
         await this.simulateWait();
 
-        const posts = await this.findAll();
+        const posts = await this.findAllPublished();
 
-        const foundPost = posts.find(post => post.id === id);
+        const foundPost = posts.slice(1).find((post) => post.id === id);
 
         if (!foundPost) throw new Error("Post Not Found");
 

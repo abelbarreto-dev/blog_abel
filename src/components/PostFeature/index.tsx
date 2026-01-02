@@ -1,14 +1,17 @@
 import { ImageCover } from "../ImageCover";
 import { PostSummary } from "../PostSummary";
+import { findAllPublishedPosts } from "@/lib/post/queries";
 
-export const PostFeature = () => {
-    const slug = "anything";
-    const postLink = `/post/${slug}`;
+export const PostFeature = async () => {
+    const posts = await findAllPublishedPosts();
+    const post = posts[0];
+
+    const postLink = `/post/${post.slug}`;
 
     return (
         <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">
             <ImageCover
-                src={"/images/bryen_0.png"}
+                src={post.coverImageUrl}
                 url={postLink}
                 priority={true}
             />
@@ -16,9 +19,9 @@ export const PostFeature = () => {
             <PostSummary
                 postHeading={"h1"}
                 postLink={postLink}
-                postTitle={"Rotina matinal de pessoas altamente eficazes"}
-                postExcerpt={"O Next.js também é uma boa escolha para quem quer se preocupar com performance e SEO."}
-                createdAt={"2025-04-08T00:24:38.616Z"}
+                postTitle={post.title}
+                postExcerpt={post.excerpt}
+                createdAt={post.createdAt}
             />
         </section>
     );
