@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PostHeading } from "../PostHeading/index";
 import { PostDate } from "../PostDate";
-import { SafeMarkdown } from "../SafeMarkdown/inde";
+import { SafeMarkdown } from "../SafeMarkdown";
 
 type SinglePostProps = {
     slug: string;
