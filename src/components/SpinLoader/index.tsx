@@ -25,6 +25,7 @@ export const SpinLoader = (
                 )}
             >
             </div>
+            <p className="pl-2 text-4xl">Aguarde</p>
         </div>
     );
 };
