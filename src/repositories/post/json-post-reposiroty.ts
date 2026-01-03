@@ -36,7 +36,7 @@ export class JsonPostRepository implements PostRepository {
 
         const posts = await this.readFromDisk();
 
-        return posts.filter(post => post.published);
+        return posts.filter((post) => post.published);
     }
 
     async findById(id: string): Promise<PostModel> {
@@ -44,9 +44,21 @@ export class JsonPostRepository implements PostRepository {
 
         const posts = await this.findAllPublished();
 
-        const foundPost = posts.slice(1).find((post) => post.id === id);
+        const foundPost = posts.find((post) => post.id === id);
 
-        if (!foundPost) throw new Error("Post Not Found");
+        if (!foundPost) throw new Error("Post Not Found For Id");
+
+        return foundPost;
+    }
+
+    async findBySlug(slug: string): Promise<PostModel> {
+        await this.simulateWait();
+
+        const posts = await this.findAllPublished();
+
+        const foundPost = posts.find((post) => post.slug === slug);
+
+        if (!foundPost) throw new Error("Post Not Found For Slug");
 
         return foundPost;
     }

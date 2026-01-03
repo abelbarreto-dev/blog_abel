@@ -1,9 +1,9 @@
 import { ImageCover } from "../ImageCover";
 import { PostSummary } from "../PostSummary";
-import { findAllPublishedPosts } from "@/lib/post/queries";
+import { findAllPublishedPostsCached } from "@/lib/post/queries";
 
 export const PostFeature = async () => {
-    const posts = await findAllPublishedPosts();
+    const posts = await findAllPublishedPostsCached();
     const post = posts[0];
 
     const postLink = `/post/${post.slug}`;

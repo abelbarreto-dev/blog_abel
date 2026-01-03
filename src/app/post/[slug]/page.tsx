@@ -1,6 +1,9 @@
+import { findPostBySlugCached } from "@/lib/post/queries";
+import { notFound } from "next/navigation";
+
 type Slug = {
     slug: string;
-}
+};
 
 type PostSlugProps = {
     params: Promise<Slug>;
@@ -9,5 +12,11 @@ type PostSlugProps = {
 export default async function PostSlugPage({ params }: PostSlugProps) {
     const { slug } = await params;
 
-    return <h1>Rota Dinâmica {slug}</h1>;
+    const post = await findPostBySlugCached(slug).catch(() => notFound());
+
+    return (
+        <div>
+            <p>{post?.content}</p>
+        </div>
+    );
 }
