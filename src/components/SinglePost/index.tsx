@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PostHeading } from "../PostHeading/index";
 import { PostDate } from "../PostDate";
+import { SafeMarkdown } from "../SafeMarkdown/inde";
 
 type SinglePostProps = {
     slug: string;
@@ -32,7 +33,7 @@ export const SinglePost = async ({ slug }: SinglePostProps) => {
 
             <p className="text-xl italic mb-4 text-slate-600">{post.excerpt}</p>
 
-            <div>{post.content}</div>
+            <SafeMarkdown markdown={post.content} />
         </article>
     );
 };
