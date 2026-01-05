@@ -45,3 +45,5 @@ next-env.d.ts
 .vscode/
 .venv/
 package-lock.json
+
+db.sqlite3
