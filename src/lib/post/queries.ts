@@ -8,3 +8,7 @@ export const findAllPublishedPostsCached = cache(
 export const findPostBySlugCached = cache(
     async (slug: string) => await postRepository.findBySlugPublished(slug)
 );
+
+export const findPostByIdCached = cache(
+    async (id: string) => await postRepository.findById(id)
+);
