@@ -1,8 +1,6 @@
 import Link from "next/link";
 
-const currentYear = async () => {
-    "use cache";
-
+const currentYear = () => {
     return new Date().getFullYear();
 }
 
