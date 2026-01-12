@@ -3,9 +3,12 @@ import { PostRepository } from "./post-repository";
 import { drizzleDb } from "@/db/drizzle";
 import { postsTable } from "@/db/drizzle/schemas";
 import { desc, eq } from "drizzle-orm";
+import { logColor } from "@/utils/log-color";
 
 export class DrizzlePostRepository implements PostRepository {
     async findAll(): Promise<PostModel[]> {
+        logColor("FindAll", Date.now());
+
         const query = drizzleDb.select().from(postsTable);
 
         query.orderBy(desc(postsTable.createdAt));
@@ -13,6 +16,8 @@ export class DrizzlePostRepository implements PostRepository {
         return await query;
     }
     async findAllPublished(): Promise<PostModel[]> {
+        logColor("FindAll Published", Date.now());
+
         const query = drizzleDb
             .select()
             .from(postsTable)
@@ -23,6 +28,8 @@ export class DrizzlePostRepository implements PostRepository {
         return await query;
     }
     async findById(id: string): Promise<PostModel> {
+        logColor("FindById", Date.now());
+
         const post = await drizzleDb.query.posts.findFirst({
             where: (post, { eq }) => eq(post.id, id),
         });
@@ -32,6 +39,8 @@ export class DrizzlePostRepository implements PostRepository {
         return post;
     }
     async findBySlugPublished(slug: string): Promise<PostModel> {
+        logColor("FindBySlugPublished", Date.now());
+
         const post = await drizzleDb.query.posts.findFirst({
             where: (post, { eq, and }) =>
                 and(eq(post.slug, slug), eq(post.published, true)),
