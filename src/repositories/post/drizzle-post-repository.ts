@@ -4,10 +4,13 @@ import { drizzleDb } from "@/db/drizzle";
 import { postsTable } from "@/db/drizzle/schemas";
 import { desc, eq } from "drizzle-orm";
 import { logColor } from "@/utils/log-color";
+import { asyncDelay } from "@/utils/async-delay";
+import { SIMULATE_WAIT } from "@/lib/constants/constants";
 
 export class DrizzlePostRepository implements PostRepository {
     async findAll(): Promise<PostModel[]> {
         logColor("FindAll", Date.now());
+        await asyncDelay(SIMULATE_WAIT, true);
 
         const query = drizzleDb.select().from(postsTable);
 
@@ -17,6 +20,7 @@ export class DrizzlePostRepository implements PostRepository {
     }
     async findAllPublished(): Promise<PostModel[]> {
         logColor("FindAll Published", Date.now());
+        await asyncDelay(SIMULATE_WAIT, true);
 
         const query = drizzleDb
             .select()
@@ -29,6 +33,7 @@ export class DrizzlePostRepository implements PostRepository {
     }
     async findById(id: string): Promise<PostModel> {
         logColor("FindById", Date.now());
+        await asyncDelay(SIMULATE_WAIT, true);
 
         const post = await drizzleDb.query.posts.findFirst({
             where: (post, { eq }) => eq(post.id, id),
@@ -40,6 +45,7 @@ export class DrizzlePostRepository implements PostRepository {
     }
     async findBySlugPublished(slug: string): Promise<PostModel> {
         logColor("FindBySlugPublished", Date.now());
+        await asyncDelay(SIMULATE_WAIT, true);
 
         const post = await drizzleDb.query.posts.findFirst({
             where: (post, { eq, and }) =>
