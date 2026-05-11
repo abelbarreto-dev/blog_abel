@@ -4,7 +4,7 @@ import { cache } from "react";
 
 export const findAllPublishedPostsCached = cache(
     unstable_cache(
-        async () => await postRepository.findAllPublished(),
+        async () => { return await postRepository.findAllPublished(); },
         ["post"],
         {
             tags: ["post"],

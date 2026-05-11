@@ -2,10 +2,19 @@ import clsx from "clsx";
 
 type DialogConfirmProps = {
     title: string;
-    message: string;
+    message: React.ReactNode;
+    disabled: boolean;
+    onConfirm: () => void;
+    onCancel: () => void;
 };
 
-export const DialogConfirm = ({ title, message }: DialogConfirmProps) => {
+export const DialogConfirm = ({ title, message, onCancel, onConfirm, disabled }: DialogConfirmProps) => {
+    const handleCancel = () => {
+        if (disabled) return;
+
+        onCancel();
+    }
+
     return (
         <div
             className={clsx(
@@ -14,6 +23,7 @@ export const DialogConfirm = ({ title, message }: DialogConfirmProps) => {
                 "flex items-center justify-center",
                 "z-50 text-center",
             )}
+            onClick={handleCancel}
         >
             <div
                 className={clsx(
@@ -23,6 +33,7 @@ export const DialogConfirm = ({ title, message }: DialogConfirmProps) => {
                     "flex flex-col gap-4",
                     "shadow-lg shadow-black/30",
                 )}
+                onClick={e => e.stopPropagation()}
             >
                 <h3 className="font-extrabold text-xl">{title}</h3>
                 <p>{message}</p>
@@ -33,8 +44,11 @@ export const DialogConfirm = ({ title, message }: DialogConfirmProps) => {
                             "flex items-center justify-center",
                             "py-2 px-4 rounded-lg",
                             "cursor-pointer",
+                            "disabled:text-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed"
                         )}
                         autoFocus
+                        onClick={onCancel}
+                        disabled={disabled}
                     >
                         Cancelar
                     </button>
@@ -44,7 +58,10 @@ export const DialogConfirm = ({ title, message }: DialogConfirmProps) => {
                             "flex items-center justify-center",
                             "py-2 px-4 rounded-lg",
                             "cursor-pointer",
+                            "disabled:text-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed"
                         )}
+                        onClick={onConfirm}
+                        disabled={disabled}
                     >
                         Ok
                     </button>
