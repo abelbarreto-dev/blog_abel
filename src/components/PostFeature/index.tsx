@@ -1,3 +1,4 @@
+import { ErrorMessage } from "../ErrorMessage";
 import { ImageCover } from "../ImageCover";
 import { PostSummary } from "../PostSummary";
 import { findAllPublishedPostsCached } from "@/lib/post/queries/public";
@@ -5,6 +6,8 @@ import { findAllPublishedPostsCached } from "@/lib/post/queries/public";
 export const PostFeature = async () => {
     const posts = await findAllPublishedPostsCached();
     const post = posts[0];
+
+    if (posts.length < 1) return <ErrorMessage contentTitle="Ops! :/" content="Ainda não criamos nenhum post!"/>;
 
     const postLink = `/post/${post.slug}`;
 
