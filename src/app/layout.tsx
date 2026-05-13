@@ -5,6 +5,7 @@ import { Header } from "../components/Header/index";
 
 import "./globals.css";
 import { Footer } from "@/components/Footer";
+import { Toastify } from "@/components/Toastify";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -41,6 +42,8 @@ export default function RootLayout({
 
                     <Footer />
                 </Container>
+
+                <Toastify />
             </body>
         </html>
     );
