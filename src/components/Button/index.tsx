@@ -10,7 +10,7 @@ type ButtonProps = {
 } & React.ComponentProps<"button">;
 
 export function Button({
-    children, variant, size="md" ...props
+    children, variant, size="md", ...props
 }: ButtonProps) {
     const buttonVariants: Record<ButtonVariants, string> = {
         default: clsx("bg-blue-600 text-blue-100"),
