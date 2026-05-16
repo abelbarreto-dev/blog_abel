@@ -1,4 +1,6 @@
 import clsx from "clsx";
+import { Button } from "../Button";
+import { BanIcon, CheckIcon } from "lucide-react";
 
 type DialogConfirmProps = {
     title: string;
@@ -38,33 +40,14 @@ export const DialogConfirm = ({ title, message, onCancel, onConfirm, disabled }:
                 <h3 className="font-extrabold text-xl">{title}</h3>
                 <p>{message}</p>
                 <div className="flex items-center justify-around gap-2">
-                    <button
-                        className={clsx(
-                            "bg-slate-300 text-slate-950 hover:bg-slate-400 transition",
-                            "flex items-center justify-center",
-                            "py-2 px-4 rounded-lg",
-                            "cursor-pointer",
-                            "disabled:text-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed"
-                        )}
-                        autoFocus
-                        onClick={onCancel}
-                        disabled={disabled}
-                    >
+                    <Button variant="ghost" size="md" onClick={onCancel} autoFocus disabled={disabled}>
+                        <BanIcon />
                         Cancelar
-                    </button>
-                    <button
-                        className={clsx(
-                            "bg-blue-500 text-slate-50 hover:bg-blue-600 transition",
-                            "flex items-center justify-center",
-                            "py-2 px-4 rounded-lg",
-                            "cursor-pointer",
-                            "disabled:text-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed"
-                        )}
-                        onClick={onConfirm}
-                        disabled={disabled}
-                    >
-                        Ok
-                    </button>
+                    </Button>
+                    <Button variant="default" size="md" onClick={onConfirm}>
+                        <CheckIcon />
+                        OK
+                    </Button>
                 </div>
             </div>
         </div>
