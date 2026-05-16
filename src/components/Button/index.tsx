@@ -39,6 +39,6 @@ export function Button({
     );
 
     return (
-        <button className={buttonCLasses} {...props}>{children}</button>
+        <button {...props} className={buttonCLasses}>{children}</button>
     );
 }
