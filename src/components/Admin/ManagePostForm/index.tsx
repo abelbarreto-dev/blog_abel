@@ -5,6 +5,7 @@ import { InputCheckbox } from "@/components/InputCheckbox";
 import { InputText } from "@/components/InputText";
 import { MarkdownEditor } from "@/components/MarkdownEditor";
 import { useState } from "react";
+import { ImageUplodader } from "../ImageUploader";
 
 type FormProps = {} & React.ComponentProps<"form">;
 
@@ -19,6 +20,10 @@ export function ManagePostForm({
 
                 <div>
                     <InputCheckbox inputName="liberdade" labelText="Felizes Para Sempre" />
+                </div>
+
+                <div>
+                    <ImageUplodader />
                 </div>
 
                 <div className="flex flex-col gap-6">
